@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
 
 class DailyReflection extends StatefulWidget {
+  const DailyReflection({Key? key}) : super(key: key);
+
   @override
   _DailyReflectionState createState() => _DailyReflectionState();
 }
 
 class _DailyReflectionState extends State<DailyReflection> {
   final TextEditingController _reflectionController = TextEditingController();
+
+  @override
+  void dispose() {
+    _reflectionController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,39 +25,19 @@ class _DailyReflectionState extends State<DailyReflection> {
         children: [
           Text(
             'Daily Reflection',
-            style: Theme.of(context).textTheme.headline6,
+            style: Theme.of(context).textTheme.titleLarge,
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           TextField(
             controller: _reflectionController,
             maxLines: 5,
-            decoration: InputDecoration(
-              hintText: 'Write your daily reflection here...',
+            decoration: const InputDecoration(
               border: OutlineInputBorder(),
+              hintText: 'Enter your reflection here',
             ),
-          ),
-          SizedBox(height: 16),
-          ElevatedButton(
-            onPressed: _saveReflection,
-            child: Text('Save Reflection'),
           ),
         ],
       ),
     );
-  }
-
-  void _saveReflection() {
-    // TODO: Implement saving reflection to local storage or backend
-    print('Reflection saved: ${_reflectionController.text}');
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Reflection saved successfully!')),
-    );
-    _reflectionController.clear();
-  }
-
-  @override
-  void dispose() {
-    _reflectionController.dispose();
-    super.dispose();
   }
 }
