@@ -1,5 +1,5 @@
 name: success_gpt
-description: "A Flutter app for self-improvement and personal growth."
+description: A Flutter app for self-improvement and personal growth.
 publish_to: 'none'
 version: 1.0.0+1
 
@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
+  shared_preferences: ^2.0.8
 
 dev_dependencies:
   flutter_test:
